@@ -27,7 +27,7 @@ export const Form: FC = () => {
             return
         }
 
-        const buffer = movie.serialize()
+        // const buffer = movie.serialize()
         const transaction = new web3.Transaction()
 
         const [pda] = await web3.PublicKey.findProgramAddress(

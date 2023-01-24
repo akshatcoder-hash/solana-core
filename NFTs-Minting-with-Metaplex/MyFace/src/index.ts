@@ -16,6 +16,29 @@ const symbol = "SYMBOL"
 const sellerFeeBasisPoints = 100
 const imageFile = "test.png"
 
+// create NFT
+async function createNft(
+  metaplex: Metaplex,
+  uri: string
+): Promise<NftWithToken> {
+  const { nft } = await metaplex
+    .nfts()
+    .create({
+      uri: uri,
+      name: tokenName,
+      sellerFeeBasisPoints: sellerFeeBasisPoints,
+      symbol: symbol,
+    })
+
+  console.log(
+    `Token Mint: https://explorer.solana.com/address/${nft.address.toString()}?cluster=devnet`
+  )
+
+  return nft
+}
+
+
+
 async function main() {
   const connection = new web3.Connection(web3.clusterApiUrl("devnet"))
   const user = await initializeKeypair(connection)
@@ -39,7 +62,18 @@ async function main() {
     // upload image and get image uri
     const imageUri = await metaplex.storage().upload(file)
     console.log("image uri:", imageUri)
+    const { uri } = await metaplex
+    .nfts()
+    .uploadMetadata({
+      name: tokenName,
+      description: description,
+      image: imageUri,
+    })
+
+  console.log("metadata uri:", uri)
+    await createNft(metaplex, uri)
 }
+
 
 main()
   .then(() => {

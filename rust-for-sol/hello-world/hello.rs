@@ -6,7 +6,7 @@ use solana_program::{
     msg
 };
 
-entrypoint!(process_instruction)
+entrypoint!(process_instruction);
 
 pub fn process_instruction(
     //Arguments and their types
@@ -15,5 +15,6 @@ pub fn process_instruction(
     instruction_data: &[u8]
     // The return type (i.e. what data type the function returns)
 ) -> ProgramResult{
-  // Leave the body empty for now :)
+    msg!("Hello, Rust!");
+  Ok(())
 }

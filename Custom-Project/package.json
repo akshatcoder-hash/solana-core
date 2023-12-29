@@ -1,0 +1,16 @@
+{
+	"dependencies": {
+		"@chakra-ui/icons": "^2.0.15",
+		"@chakra-ui/react": "^2.4.6",
+		"@chakra-ui/system": "^2.3.7",
+		"@emotion/react": "^11",
+		"@emotion/styled": "^11",
+		"@solana/wallet-adapter-base": "^0.9.20",
+		"@solana/wallet-adapter-react": "^0.15.28",
+		"@solana/wallet-adapter-react-ui": "^0.9.27",
+		"@solana/wallet-adapter-wallets": "^0.19.10",
+		"@solana/web3.js": "^1.73.0",
+		"framer-motion": "^6",
+		"react": "^18.2.0"
+	}
+}
